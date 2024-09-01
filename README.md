@@ -99,7 +99,7 @@ npm install dotenv
 
 -   Also I have fun designing a favicon in GIMP:
 
-![favicon](public\images\faviconScreenshot.png)
+![favicon](public/images/faviconScreenshot.png)
 
 ### **_2. Setting up the Database in pdAdmin:_**
 
@@ -135,7 +135,7 @@ ALTER COLUMN book_url TYPE VARCHAR(150);
 
 -   In pgAdmin, the table now appeare as:
 
-![preliminary table view](public\images\db_view.jpg)
+![preliminary table view](public/images/db_view.jpg)
 
 -   I later add columns for users to add comments, and to indicate when a book is added/updated. Here's the SQL code adding/altering the date columns, and the code adding the `book_comments` column to the database:
 
@@ -252,4 +252,4 @@ _Andrew Blais, September 1, 2024_
 
 -   A screenshot of the Web Application:
 
-![screenshot](public\images\webAppScreenshot.png)
+![screenshot](public/images/webAppScreenshot.png)
