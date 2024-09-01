@@ -160,6 +160,8 @@ ADD book_comments VARCHAR(1000);
 
 -   The challenge is to smoothly access the database with JavaScript queries/commands.
 
+-   Great care is taken to create forms where the user can input a book title or ISBN or edit the data for an existing book on the list, and to retrieve this in the backend and query the API, then updating the database so the frontend .ejs can retrieve the current list of books with the desired changes. This is a challenging step for me, making sure all of the HTML/EJS elements are named/id'd properly and the backend retrieves exactly the right data which is input.
+
 -   In the main file `index.js` I built test all of the database functionality first by containing the book list data in an array. Once I got the HTML/EJS/CSS successfully integrate with `index.js`, I converted the functionality to access the pgAdmin database with proper queries. The array testing code is comment out in `index.js`
 
 -   pgAdmin's Query Tool is quite helpful for testing SQL code before implementing it in JavaScript. The SQL to test inserting an entry:
@@ -228,13 +230,13 @@ git push -u origin main
 
     -   Setting up a Node.js project and making sure the directory/libraries are installed successfully.
 
-    -   Passing information between the front and backends with constistent, clean and effective JavaScript and HTML naming conventions for variables/user input.
+    -   Passing information between the front and backends with constistent, clean and effective JavaScript and HTML naming conventions for variables/user input. Creating the forms provided a challenge, also getting them to look good in their flex containers in a way that will respond to differently sized user devices/screens.
 
     -   Incorporating robust, manageable PostgreSQL queries with JavaScript.
 
--   The less challenging aspects of this project:
+    -   The hardest part of creating the CSS was making the flex containers and ensuring their CSS properties were given values that work well in the flow of the desired appearance.
 
-    -   Aside from the creative side of creating a Web Application, I'm very comfortable with HTML/CSS commands and options.
+-   The less challenging aspects of this project:
 
     -   Although the overall process of making this project was time-consuming, I felt in control and aware of all of the steps I needed to take. It was hard work, but I'm feeling much more fluent with JavaScript, Node.js, PostgreSQL and more advanced CSS conventions.
 
