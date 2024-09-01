@@ -1,0 +1,287 @@
+/* IN TWO GROUPS: HTML TAGS, THEN CLASSES */
+/* ALL PROPERTIES IN ALPHABETICAL ORDER */
+
+/* ** * * *** * * * ** */
+/* * *  HTML TAGS  * * */
+/* ** * * *** * * * ** */
+body {
+    color: moccasin;
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    font-family: Gill Sans, sans-serif;
+    justify-content: space-evenly;
+    margin: 0.5rem auto;
+    min-height: 85vh;
+    overflow: auto;
+    padding: 0.5rem;
+}
+
+footer {
+    color: moccasin;
+    flex: 0 0 auto;
+    font-weight: 600;
+    margin: 6rem auto 3rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px mediumvioletred, 0 0 1rem darkslateblue,
+        0 0 0.15rem darkslateblue;
+}
+
+form {
+    margin-left: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 5rem auto 4rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px mediumvioletred, 0 0 1rem darkslateblue,
+        0 0 0.15rem darkslateblue;
+}
+
+h2 {
+    margin: 3rem auto 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px mediumvioletred, 0 0 1rem darkslateblue,
+        0 0 0.15rem darkslateblue;
+}
+
+h4 {
+    font-style: italic;
+    font-weight: normal;
+    margin: 0.5rem auto 0.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px mediumvioletred, 0 0 1rem darkslateblue,
+        0 0 0.15rem darkslateblue;
+}
+
+html {
+    background-color: darkslateblue;
+    background-image: linear-gradient(
+        0.975turn,
+        darkslateblue,
+        mediumvioletred,
+        peru,
+        65%,
+        mediumvioletred,
+        darkslateblue
+    );
+    min-height: 1000px;
+}
+
+input[type="text"],
+textarea {
+    background-color: darkslateblue;
+    border: 0.4rem mediumvioletred;
+    border-radius: 0.5rem;
+    color: moccasin;
+    margin-top: 0.5rem;
+    padding: 0.15rem 0.25rem;
+    width: 80%;
+}
+
+input[type="text"] {
+    font-size: 1.15rem;
+    font-weight: 200;
+    height: 1.5rem;
+}
+
+textarea {
+    font-size: 0.95rem;
+    font-weight: 400;
+    height: 10rem;
+}
+
+input::placeholder {
+    font-size: 0.995rem;
+    font-style: italic;
+    opacity: 0.975;
+}
+
+label {
+    font-style: italic;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.35rem;
+    margin: 0 auto;
+    padding: 0.25rem 0;
+    text-align: center;
+    text-overflow: "-";
+    text-shadow: 0.2rem -0.1rem 0.5rem darkslateblue;
+    word-break: break-word;
+}
+
+::placeholder {
+    color: lightgray;
+    opacity: 1;
+}
+
+textarea {
+    border: 0.4rem mediumvioletred;
+    border-radius: 0.5rem;
+    color: moccasin;
+    font-size: 0.95rem;
+    font-weight: 400;
+    height: 10rem;
+    margin-top: 0.5rem;
+    padding: 0.15rem 0.25rem;
+    width: 80%;
+}
+
+textarea::placeholder {
+    color: silver;
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.975;
+}
+
+/* ** * * *** * * * ** */
+/* * * * CLASSES * * * */
+/* ** * * *** * * * ** */
+.book-author {
+    font-size: 1rem;
+    padding: 0.15rem 0 0.5rem;
+}
+
+.book-comments {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.1rem;
+    line-height: 1.15rem;
+    padding: 0.75rem 0 0;
+}
+
+.book-image {
+    width: 90%;
+}
+
+.book-recommender {
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0.5rem 0 1rem;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    font-style: italic;
+    padding: 0.25rem 0 0;
+}
+
+.buttons {
+    background-color: moccasin;
+    border-radius: 0.75rem;
+    color: darkslateblue;
+    font-family: Gill Sans, sans-serif;
+    font-size: 1.035rem;
+    margin-top: 1rem;
+    padding: 0.4rem 0.65rem;
+    transition: transform 0.25s ease-in-out 0.1s;
+}
+
+.buttons:hover {
+    border-radius: 1rem;
+    color: black;
+    font-size: 1.095rem;
+    transform: scale(1.05);
+}
+
+.date-text {
+    color: navajowhite;
+    font-family: "Courier New", monospace;
+    font-size: 0.75rem;
+    font-style: italic;
+    padding: 0.1rem 0;
+    text-shadow: 1px 1px 1px firebrick, 0 0 0.5rem darkslateblue,
+        0 0 0.1rem darkslateblue;
+}
+
+.delete-button:hover {
+    color: firebrick;
+}
+
+.edit-button:hover {
+    color: goldenrod;
+}
+
+.flex-book-element {
+    border-radius: 1.5rem;
+    box-shadow: 1.5rem 1.25rem 3.5rem 0.95rem rgba(50, 30, 60, 0.4);
+    display: flex;
+    flex-direction: column;
+    min-height: 30rem;
+    justify-content: space-evenly;
+    margin: 0.5rem auto 2rem;
+    min-width: 200px;
+    overflow: auto;
+    padding: 1.25rem 2.25rem;
+    width: 35%;
+}
+
+.flex-book-subelements {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.flex-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem auto;
+}
+
+.flex-edit-element {
+    border-radius: 1.5rem;
+    box-shadow: 0.95rem -0.25rem 5rem 0.65rem rgba(50, 30, 60, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.5rem auto;
+    overflow: auto;
+    padding: 0.5rem 0.75rem 1rem;
+}
+
+.flex-form-element {
+    border-radius: 1.5rem;
+    box-shadow: 0.95rem -0.25rem 5rem 0.65rem rgba(50, 30, 60, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.5rem auto 5rem;
+    padding: 0.5rem 0.75rem 1rem;
+}
+
+.form-item {
+    margin: 1.5rem auto 1rem;
+}
+
+.heading {
+    margin: 0.5rem 2rem;
+}
+
+.home-link {
+    color: moccasin;
+    text-decoration: none;
+}
+
+.pad-lr {
+    margin: 0 0.5rem;
+}
+
+.test-class {
+    background-color: firebrick;
+}
+
+.warning-text {
+    color: navajowhite;
+    font-weight: bold;
+    padding-bottom: 0.25rem;
+    text-shadow: 2px 2px 2px firebrick, 0 0 1rem darkslateblue,
+        0 0 0.15rem darkslateblue;
+    transform: scale(1.4);
+}

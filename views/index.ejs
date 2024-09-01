@@ -1,0 +1,335 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="heading" id="heading">
+    <h1><a href="/" class="home-link">Summer Book Club</a></h1>
+</div>
+
+<h2>Add Book to List</h2>
+
+<div class="flex-form-element">
+    <!-- *** ADDd BOOK FORM *** -->
+    <form action="/add" method="post" id="add-form">
+        <!-- *** FORM INPUT FOR BOOK TITLE *** -->
+        <div class="form-item">
+            <label for="bookTitle">Title:</label><br />
+            <input
+                type="text"
+                id="bookTitle"
+                name="bookTitle"
+                placeholder="Clans of the Alphane Moon"
+                autofocus="true"
+                autocomplete="off"
+            /><br />
+        </div>
+
+        <!-- *** FORM INPUT FOR BOOK ISBN *** -->
+        <div class="form-item">
+            <label for="bookISBN">ISBN:</label><br />
+            <input
+                type="text"
+                id="bookISBN"
+                name="bookISBN"
+                placeholder="0441110363"
+                autocomplete="off"
+            /><br />
+        </div>
+
+        <!-- *** FORM INPUT FOR RECOMMENDER NAME *** -->
+        <div class="form-item">
+            <label for="bookRecommender">Recommended By:</label><br />
+            <input
+                type="text"
+                id="bookRecommender"
+                name="bookRecommender"
+                placeholder="Your Name"
+                autocomplete="off"
+            />
+        </div>
+
+        <!-- *** FORM INPUT FOR COMMENTS *** -->
+        <div class="form-item">
+            <label for="bookComments">Comments:</label><br />
+            <textarea
+                id="bookComments"
+                name="bookComments"
+                maxlength="1000"
+                placeholder="Why do you recommend this book?"
+                autocomplete="off"
+            ></textarea>
+        </div>
+
+        <br />
+
+        <!-- *** DISPLAY ERROR MESSAGE IF BOOK IS NOT FOUND *** -->
+        <!-- *** OTHERWISE PROMPT USER FOR INPUT *** -->
+        <% if (bookNotFound) {%>
+        <h4 id="user-instruction" class="warning-text">
+            Book Not Found.<br />Try Again!
+        </h4>
+        <% } else { %>
+        <h4 id="user-instruction">enter title or isbn</h4>
+        <% } %>
+
+        <!-- *** SUBMIT BUTTON FOR ADDING A BOOK *** -->
+        <input class="buttons" type="submit" value="Submit" />
+    </form>
+</div>
+
+<h2>Book Recommendations:</h2>
+
+<!-- *** ITERATE OVER BOOKRECOMMENDATIONS ARRAY AND DISPLAY EACH BOOK *** -->
+<% for(let bookRecommendation of bookRecommendations){%>
+<div class="flex-book-element">
+    <!-- *** DISPLAY BOOK INFORMATION *** -->
+    <div id="display<%= bookRecommendation.id %>" class="flex-book-subelements">
+        <!-- *** DISPLAY BOOK TITLE  *** -->
+        <p class="book-title"><%= bookRecommendation.book_title %></p>
+
+        <!-- *** DISPLAY BOOK AUTHOR *** -->
+        <p class="book-author">by <%= bookRecommendation.book_author %></p>
+
+        <!-- *** DISPLAY BOOK COVER IMAGE *** -->
+        <img
+            src="<%= bookRecommendation.book_url %>"
+            alt="<%= bookRecommendation.book_title %> image"
+            class="book-image"
+        />
+
+        <!-- *** DISPLAY BOOK COMMENTS IF AVAILABLE *** -->
+        <% if (bookRecommendation.book_comments) { %>
+        <p class="book-comments">“<%= bookRecommendation.book_comments %>”</p>
+        <% } %>
+
+        <!-- *** DISPLAY BOOK RECOMMENDER IF AVAILABLE *** -->
+        <% if (bookRecommendation.book_recommender) { %>
+        <p class="book-recommender">
+            ― <%= bookRecommendation.book_recommender %>
+        </p>
+        <% } %>
+
+        <!-- *** DISPLAY DATE ADDED -->
+        <p class="date-text">ADDED <%= bookRecommendation.date_added %></p>
+
+        <!-- *** DISPLAY DATE UPDATED -->
+        <p class="date-text">UPDATED <%= bookRecommendation.date_updated %></p>
+
+        <!-- *** BOOK ACTION BUTTONS (EDIT AND DELETE) *** -->
+        <div class="flex-buttons">
+            <!-- *** EDIT BOOK BUTTON *** -->
+            <button
+                onclick="displayEditForm('<%= bookRecommendation.id %>')"
+                class="buttons edit-button"
+            >
+                Edit
+            </button>
+
+            <!-- *** DELETE BOOK FORM/BUTTON*** -->
+            <form action="/delete" method="post">
+                <input
+                    type="hidden"
+                    name="bookDBId"
+                    value="<%= bookRecommendation.id %>"
+                />
+                <button class="buttons delete-button" type="submit">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- *** EDIT BOOK FORM (INITIALLY HIDDEN) *** -->
+    <div class="flex-edit-element">
+        <form
+            id="edit<%= bookRecommendation.id %>"
+            action="/edit"
+            method="post"
+            hidden
+        >
+            <!-- *** FORM INPUT FOR EDITING BOOK TITLE *** -->
+            <div class="form-item">
+                <label for="editBookTitle">Title:</label><br />
+                <input
+                    type="text"
+                    id="editBookTitle"
+                    name="editBookTitle"
+                    value="<%= bookRecommendation.book_title %>"
+                    autofocus="true"
+                    autocomplete="off"
+                /><br />
+            </div>
+
+            <!-- *** FORM INPUT FOR EDITING BOOK AUTHOR *** -->
+            <div class="form-item">
+                <label for="editBookAuthor">Author:</label><br />
+                <input
+                    type="text"
+                    id="editBookAuthor"
+                    name="editBookAuthor"
+                    value="<%= bookRecommendation.book_author %>"
+                    autofocus="true"
+                    autocomplete="off"
+                /><br />
+            </div>
+
+            <!-- *** FORM INPUT FOR EDITING BOOK IMAGE URL *** -->
+            <div class="form-item">
+                <label for="editBookImageURL">Image URL:</label><br />
+                <input
+                    type="text"
+                    id="editBookImageURL"
+                    name="editBookImageURL"
+                    value="<%= bookRecommendation.book_url %>"
+                    autocomplete="off"
+                /><br />
+            </div>
+
+            <!-- *** FORM INPUT FOR EDITING BOOK COMMENTS *** -->
+            <div class="form-item">
+                <label for="editBookComments">Comments:</label><br />
+                <textarea
+                    id="editBookComments"
+                    name="editBookComments"
+                    maxlength="1000"
+                    autocomplete="off"
+                >
+<%= bookRecommendation.book_comments %></textarea
+                >
+            </div>
+
+            <!-- *** FORM INPUT FOR EDITING BOOK RECOMMENDER *** -->
+            <div class="form-item">
+                <label for="editBookRecommender">Recommended By:</label><br />
+                <input
+                    type="text"
+                    id="editBookRecommender"
+                    name="editBookRecommender"
+                    value="<%= bookRecommendation.book_recommender %>"
+                    autocomplete="off"
+                />
+            </div>
+
+            <!-- *** Hidden Input for Date Added *** -->
+            <div>
+                <input
+                    type="hidden"
+                    name="dateAdded"
+                    value="<%= bookRecommendation.date_added %>"
+                />
+            </div>
+
+            <!-- *** Hidden Input for Book ID *** -->
+            <input
+                type="hidden"
+                name="bookDBId"
+                value="<%= bookRecommendation.id %>"
+            />
+
+            <!-- *** Edit Confirmation and Cancel Buttons *** -->
+            <div class="flex-buttons">
+                <button
+                    onclick="confirmEdit('<%= bookRecommendation.id %>', event)"
+                    class="buttons pad-lr"
+                    type="submit"
+                    name="bookDBID"
+                >
+                    Confirm
+                </button>
+                <!-- *** CANCEL EDIT ***  -->
+                <button
+                    onclick="cancelEdit('<%= bookRecommendation.id %>', event)"
+                    class="buttons pad-lr"
+                    type="submit"
+                >
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<% } %>
+
+<script>
+    // Form validation: Ensure either title or ISBN is provided before submitting the add form:
+    document
+        .querySelector("#add-form")
+        .addEventListener("submit", function (event) {
+            const bookTitle = document.querySelector("#bookTitle").value;
+            const bookISBN = document.querySelector("#bookISBN").value;
+            if (!bookTitle && !bookISBN) {
+                // Prevent form submission if both title and ISBN are empty:
+                event.preventDefault();
+                const userInstruction =
+                    document.getElementById("user-instruction");
+                userInstruction.classList.add("warning-text");
+            } else {
+                // Reset instruction text in case there was a previous warning:
+                const userInstruction =
+                    document.getElementById("user-instruction");
+                userInstruction.classList.remove("warning-text");
+            }
+        });
+
+    /**
+     * Shows the edit form for a specific book recommendation.
+     *
+     * @param {string} id - The unique ID of the book recommendation.
+     */
+    function displayEditForm(id) {
+        // Hide the book display and show the edit form
+        document.getElementById(`display${id}`).style.display = "none";
+        document.getElementById(`edit${id}`).hidden = false;
+    }
+
+    /**
+     * Shows the book display and hides the edit form for a specific book recommendation.
+     * This function is used by both the cancel and confirm actions.
+     *
+     * @param {string} id - The unique ID of the book recommendation.
+     */
+    function displayBookInfo(id) {
+        // Show the book display and hide the edit form
+        document.getElementById(`display${id}`).style.display = "block";
+        document.getElementById(`edit${id}`).hidden = true;
+    }
+
+    /**
+     * Hides the edit form and shows the book display for the cancel action.
+     *
+     * @param {string} id - The unique ID of the book recommendation.
+     * @param {Event} event - The event triggered by clicking the cancel button.
+     */
+    function cancelEdit(id, event) {
+        // Prevent form submission when Cancel is clicked
+        event.preventDefault();
+        // Call displayBookInfo to handle the cancel action
+        displayBookInfo(id);
+    }
+
+    /**
+     * Hides the edit form and shows the book display after confirming the edit.
+     *
+     * @param {string} id - The unique ID of the book recommendation.
+     * @param {Event} event - The event triggered by clicking the confirm button.
+     */
+    function confirmEdit(id) {
+        // Call displayBookInfo to handle the confirm action
+        displayBookInfo(id);
+    }
+
+    // Save the scroll position before the page unloads:
+    window.addEventListener("beforeunload", function () {
+        localStorage.setItem("scrollPosition", window.scrollY);
+    });
+
+    // Restore the scroll position after the page loads:
+    window.addEventListener("load", function () {
+        const savedScrollPosition = localStorage.getItem("scrollPosition");
+        if (savedScrollPosition !== null) {
+            window.scrollTo(0, parseInt(savedScrollPosition, 10));
+            // Clear the saved position:
+            localStorage.removeItem("scrollPosition");
+        }
+    });
+</script>
+
+<%- include('partials/footer.ejs'); -%>
